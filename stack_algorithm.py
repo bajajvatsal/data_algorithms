@@ -22,7 +22,7 @@ class Stack:
 
     def push(self, value):
         if self.top == self.limit:
-            raise StackOverflow("")
+            raise StackOverflow("No space is available for operations")
         else:
             self.top = +1
             self.stack.append(int(value))
@@ -30,7 +30,7 @@ class Stack:
 
     def pop(self):
         if self.top == -1:
-            raise StackUnderflow
+            raise StackUnderflow("Empty stack")
         else:
             self.stack.remove(self.stack[self.length - 1])
             print(self.stack)
@@ -38,7 +38,7 @@ class Stack:
 
     def peek(self):
         if self.top == -1:
-            raise StackUnderflow
+            raise StackUnderflow("Empty stack")
         else:
             print(f"Element at the top is: {self.stack[self.length-1]}")
 
