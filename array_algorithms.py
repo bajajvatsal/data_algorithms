@@ -1,3 +1,4 @@
+import sys
 from list_creation import unordered_array
 
 
@@ -115,39 +116,44 @@ if __name__ == '__main__':
 
     a = Array()
     print(f"Array to be operated on: {a.array}")
-    operation_type = input("For insertion press (i)\n"
-                           "For deletion press (d)\n"
-                           "Enter your response with given string in brackets: ")
-    if operation_type == "i":
-        operation = input("(1)Insert at end: \n"
-                          "(2)Insert at front: \n"
-                          "(3)Insert at given index: \n"
-                          "(4)insert after a given value: \n"
-                          "Enter your response with given number in brackets: ")
-        val = int(input("Enter the value to insert: "))
-        if operation == "1":
-            a.insert_end(val)
-        elif operation == "2":
-            a.insert_front(val)
-        elif operation == "3":
-            ind = int(input("Index for appending value: "))
-            if ind > len_array:
-                raise ArrayIndexOutOfRangeError
-            a.insert_local(val, ind)
-        elif operation == "4":
-            ind = int(input("After which value to append: "))
-            if ind not in a.array:
-                raise ArrayValueNotFoundError
-            a.insert_after_given_value(ind, val)
-    elif operation_type == "d":
-        operation = input("(5)delete at end: \n"
-                          "(6)delete at front: \n"
-                          "(7)Delete at given index: \n"
-                          "Enter your response with given number in brackets: ")
-        if operation == "5":
-            a.remove_end()
-        elif operation == "6":
-            a.remove_front()
-        elif operation == "7":
-            ind = int(input("Index to delete the element: "))
-            a.remove_at_index(ind)
+    run_again = "y"
+    while run_again == "y":
+        operation_type = input("For insertion press (i)\n"
+                               "For deletion press (d)\n"
+                               "Enter your response with given string in brackets: ")
+        if operation_type == "i":
+            operation = input("(1)Insert at end: \n"
+                              "(2)Insert at front: \n"
+                              "(3)Insert at given index: \n"
+                              "(4)insert after a given value: \n"
+                              "Enter your response with given number in brackets: ")
+            val = int(input("Enter the value to insert: "))
+            if operation == "1":
+                a.insert_end(val)
+            elif operation == "2":
+                a.insert_front(val)
+            elif operation == "3":
+                ind = int(input("Index for appending value: "))
+                if ind > len_array:
+                    raise ArrayIndexOutOfRangeError
+                a.insert_local(val, ind)
+            elif operation == "4":
+                ind = int(input("After which value to append: "))
+                if ind not in a.array:
+                    raise ArrayValueNotFoundError
+                a.insert_after_given_value(ind, val)
+        elif operation_type == "d":
+            operation = input("(5)delete at end: \n"
+                              "(6)delete at front: \n"
+                              "(7)Delete at given index: \n"
+                              "Enter your response with given number in brackets: ")
+            if operation == "5":
+                a.remove_end()
+            elif operation == "6":
+                a.remove_front()
+            elif operation == "7":
+                ind = int(input("Index to delete the element: "))
+                a.remove_at_index(ind)
+        run_again = input("Want to run program again - (y)Yes or (n)No: ")
+    if run_again=="n":
+        sys.exit("Exit operation commanded")
