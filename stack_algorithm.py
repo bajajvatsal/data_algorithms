@@ -1,3 +1,4 @@
+import sys
 from list_creation import unordered_array
 
 
@@ -40,7 +41,7 @@ class Stack:
         if self.top == -1:
             raise StackUnderflow("Empty stack")
         else:
-            print(f"Element at the top is: {self.stack[self.length-1]}")
+            print(f"Element at the top is: {self.stack[self.length - 1]}")
 
 
 if __name__ == "__main__":
@@ -50,15 +51,19 @@ if __name__ == "__main__":
         raise StackLimitError("Limit must be greater than the length")
     stack = Stack()
     print(f"Stack to work on: {stack.stack}")
-    operation = int(input("(1)Push\n"
-                          "(2)Pop\n"
-                          "(3)Peek\n"
-                          "Enter the number in bracket: "))
-    if operation == 1:
-        v = int(input("Enter the value to append: "))
-        stack.push(v)
-    elif operation == 2:
-        stack.pop()
-    elif operation == 3:
-        stack.peek()
-    print("Enjoy the program :)")
+    run_again = "y"
+    while run_again == "y":
+        operation = int(input("(1)Push\n"
+                              "(2)Pop\n"
+                              "(3)Peek\n"
+                              "Enter the number in bracket: "))
+        if operation == 1:
+            v = int(input("Enter the value to append: "))
+            stack.push(v)
+        elif operation == 2:
+            stack.pop()
+        elif operation == 3:
+            stack.peek()
+        run_again = input("Want to run program again - (y)Yes or (n)No: ")
+    if run_again == "n":
+        sys.exit("Exit operation commanded")
