@@ -155,5 +155,5 @@ if __name__ == '__main__':
                 ind = int(input("Index to delete the element: "))
                 a.remove_at_index(ind)
         run_again = input("Want to run program again - (y)Yes or (n)No: ")
-    if run_again=="n":
+    if run_again == "n":
         sys.exit("Exit operation commanded")
