@@ -1,10 +1,11 @@
+import sys
 from list_creation import unordered_array
 
 
 class Sorting:
 
-    def __init__(self, lenarray):
-        self.array = unordered_array(lenarray)
+    def __init__(self, array_length):
+        self.array = unordered_array(array_length)
 
         self.length = len(self.array)
 
@@ -39,14 +40,18 @@ class Sorting:
         print(f"{self.array} is ordered array")
 
 
-
 if __name__ == '__main__':
-    len_array = int(input("No of elements to work upon: "))
-    sort_method = input('''Enter the method for sorting: (b)Bubble sort, (i)Insertion sort, (s)Selection sort''')
-    s = Sorting(len_array)
-    if sort_method == "b":
-        s.bubble_sort()
-    elif sort_method == "i":
-        s.insertion_sort()
-    elif sort_method == "s":
-        s.selection_sort()
+    run_again = "y"
+    while run_again == "y":
+        len_array = int(input("No of elements to work upon: "))
+        s = Sorting(len_array)
+        sort_method = input('''Enter the method for sorting: (b)Bubble sort, (i)Insertion sort, (s)Selection sort''')
+        if sort_method == "b":
+            s.bubble_sort()
+        elif sort_method == "i":
+            s.insertion_sort()
+        elif sort_method == "s":
+            s.selection_sort()
+        run_again = input("Want to run the program again- (y)Yes or (n)No")
+        if run_again == "n":
+            sys.exit("Exit operation commanded")
