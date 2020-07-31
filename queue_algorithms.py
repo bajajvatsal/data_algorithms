@@ -1,3 +1,4 @@
+import sys
 from list_creation import unordered_array  # list of numbers of desired length randomly ordered no repetition
 
 
@@ -47,20 +48,24 @@ class Queue:
 
 
 if __name__ == '__main__':
-    length_array = int(input("Length of queue: "))
-    limit_array = int(input("Limit of queue: "))
-    if length_array >= limit_array:
-        raise QueueOverflow("Limit must be grater than length of the array! Re-run the program")
-    operation = input("which operation to do: (f)if_full, (m)is_empty, (e)enqueue, (d)dequeue: ")
-    q = Queue()
-    print(f"Queue to be operated on: {q.queue}")
-    if operation == 'f':
-        q.is_full()
-    elif operation == 'm':
-        q.is_empty()
-    elif operation == 'e':
-        value = int(input("Enter the value to enqueue: "))
-        q.enqueue(value)
-    elif operation == 'd':
-        q.dequeue()
-    print("Enjoy The Program :)")
+    run_again = "y"
+    while run_again == "y":
+        length_array = int(input("Length of queue: "))
+        limit_array = int(input("Limit of queue: "))
+        if length_array >= limit_array:
+            raise QueueOverflow("Limit must be grater than length of the array! Re-run the program")
+        operation = input("which operation to do: (f)if_full, (m)is_empty, (e)enqueue, (d)dequeue: ")
+        q = Queue()
+        print(f"Queue to be operated on: {q.queue}")
+        if operation == 'f':
+            q.is_full()
+        elif operation == 'm':
+            q.is_empty()
+        elif operation == 'e':
+            value = int(input("Enter the value to enqueue: "))
+            q.enqueue(value)
+        elif operation == 'd':
+            q.dequeue()
+        run_again = input("Want to run program again - Yes(y) or (n)No")
+        if run_again == "n":
+            sys.exit("Exit operation commanded")
