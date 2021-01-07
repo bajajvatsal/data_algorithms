@@ -35,7 +35,7 @@ class Array:
             raise ArrayOverflowError("Array Overflow")
         else:
             self.array.append(value)
-            print(self.array)
+            print(f"After the given operation array is: {self.array}")
 
     def insert_front(self, value):
         if self.length == self.limit:
@@ -46,7 +46,7 @@ class Array:
                 self.array[i] = self.array[i - 1]
                 i = +1
             self.array[0] = value
-            print(self.array)
+            print(f"After the given operation array is: {self.array}")
 
     def insert_local(self, index, value):
         if self.length == self.limit:
@@ -59,43 +59,33 @@ class Array:
                 self.array[i] = self.array[i + 1]
                 i = -1
             self.array[index] = value
-            print(self.array)
-
+            print(f"After the given operation array is: {self.array}")
+#Todo 
     def insert_after_given_value(self, search, value):
 
         if self.length == self.limit:
             raise ArrayOverflowError("Array Overflow")
         else:
-            i = 0
-            while i < self.length:
-                if self.array[i] == search:
+            i=1
+            for i in range(0, self.length):
+                if self.array[i]==search:
                     break
-                else:
-                    i = +1
-                if i == self.length:
-                    print("no search value found no insertion")
-                else:
-                    j = self.length - 1
-                    while j > i:
-                        self.array[j + 1] = self.array[j]
-                        j = j - 1
-                        self.array[i + 1] = value
-                        self.length = +1
-        print(self.array)
+            self.array.insert(i+1,value)
+        print(f"After the given operation array is: {self.array}")
 
     def remove_end(self):
         if self.length == 0:
             raise ArrayValueDeletionError("Deletion not possible no elements found")
         else:
-            self.array.remove(self.length)
-            print(self.array)
+            self.array.remove(self.array[self.length - 1])
+            print(f"After the given operation array is: {self.array}")
 
     def remove_front(self):
         if self.length == 0:
             raise ArrayValueDeletionError("Deletion not possible no elements found")
         else:
             self.array.remove(self.array[0])
-            print(self.array)
+            print(f"After the given operation array is: {self.array}")
 
     def remove_at_index(self, index):
 
@@ -104,8 +94,8 @@ class Array:
         elif index > self.length - 1:
             raise ArrayIndexOutOfRangeError("Array Index Out of Range")
         else:
-            self.array.remove(self.array[index])
-        print(self.array)
+            self.array.remove(self.array[index - 1])
+        print(f"After the given operation array is: {self.array}")
 
 
 if __name__ == '__main__':
@@ -113,8 +103,15 @@ if __name__ == '__main__':
     limit = int(input("Limit of the array: "))
     if len_array >= limit:
         raise InvalidLimitError("Limit must be grater than length of the array")
-
     a = Array()
+    input_array = input("Do you wnat to operate on the computer generated arary y or n : ")
+    # if input_array == "y":
+    #     print(f"Array to be operated on: {a.array}")
+    if input_array == "n":
+        a.array.clear()
+        for i in range(len_array):
+            integer_int = int(input("Enter the element of index " + str(i + 1) + ": "))
+            a.array.append(integer_int)
     print(f"Array to be operated on: {a.array}")
     run_again = "y"
     while run_again == "y":
@@ -136,7 +133,7 @@ if __name__ == '__main__':
                 ind = int(input("Index for appending value: "))
                 if ind > len_array:
                     raise ArrayIndexOutOfRangeError
-                a.insert_local(val, ind)
+                a.insert_local(ind, val)
             elif operation == "4":
                 ind = int(input("After which value to append: "))
                 if ind not in a.array:
